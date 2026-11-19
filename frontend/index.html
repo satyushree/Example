@@ -1,0 +1,249 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>KRISHNA // Autonomous AI Operating System</title>
+    <!-- Google Fonts Outfit & JetBrains Mono -->
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;600;800&family=JetBrains+Mono:wght@400;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="stars"></div>
+    <div class="glowing-bg"></div>
+
+    <div class="container">
+        <!-- Main Header -->
+        <header class="app-header">
+            <div class="logo-area">
+                <div class="holo-core"></div>
+                <div class="title-details">
+                    <h1>KRISHNA <span>v1.0</span></h1>
+                    <p class="subtitle">AUTONOMOUS PERSONAL CO-PILOT</p>
+                </div>
+            </div>
+            <div class="system-status-indicator">
+                <div class="indicator-item">
+                    <span class="label">AI ENGINE:</span>
+                    <span id="active-model" class="value glow-cyan">Gemini 1.5 Flash</span>
+                </div>
+                <div class="indicator-item">
+                    <span class="label">WAKE STATE:</span>
+                    <span id="listening-state" class="value glow-green"> Krishna (Active)</span>
+                </div>
+                <div class="indicator-item">
+                    <span class="label">LOCAL TIME:</span>
+                    <span id="clock" class="value">00:00:00</span>
+                </div>
+            </div>
+        </header>
+
+        <!-- Grid Dashboard Content -->
+        <main class="dashboard-grid">
+            <!-- Left Side: System Metrics -->
+            <section class="card glassmorphic system-panel">
+                <div class="card-header">
+                    <h2>SYSTEM DIAGNOSTICS</h2>
+                    <span class="pulse-dot"></span>
+                </div>
+                <div class="card-content">
+                    <div class="metric-group">
+                        <div class="metric-label">
+                            <span>CPU USAGE</span>
+                            <span id="cpu-percent">0%</span>
+                        </div>
+                        <div class="progress-bar-bg">
+                            <div id="cpu-bar" class="progress-bar-fill fill-cyan" style="width: 0%"></div>
+                        </div>
+                    </div>
+
+                    <div class="metric-group">
+                        <div class="metric-label">
+                            <span>RAM ALLOCATION</span>
+                            <span id="ram-usage">0 GB / 0 GB</span>
+                        </div>
+                        <div class="progress-bar-bg">
+                            <div id="ram-bar" class="progress-bar-fill fill-purple" style="width: 0%"></div>
+                        </div>
+                    </div>
+
+                    <div class="metric-group">
+                        <div class="metric-label">
+                            <span>POWER STATUS</span>
+                            <span id="battery-percent">100%</span>
+                        </div>
+                        <div class="progress-bar-bg">
+                            <div id="battery-bar" class="progress-bar-fill fill-green" style="width: 100%"></div>
+                        </div>
+                        <div class="battery-meta">
+                            <span id="power-source">Ac Power Connected</span>
+                        </div>
+                    </div>
+
+                    <div class="metric-sub-grid">
+                        <div class="small-metric">
+                            <span class="small-label">VOICE AUTH</span>
+                            <span class="small-val text-green">SECURE</span>
+                        </div>
+                        <div class="small-metric">
+                            <span class="small-label">PRIVACY MODE</span>
+                            <span class="small-val text-cyan">LOCAL-FIRST</span>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Center Panel: Avatar Core Visualizer & Voice Command Core -->
+            <section class="center-panel">
+                <div class="avatar-container">
+                    <div class="radial-ring outer-ring"></div>
+                    <div class="radial-ring mid-ring"></div>
+                    <div class="radial-ring inner-ring"></div>
+                    <div class="core-node" id="krishna-avatar">
+                        <div class="core-wave"></div>
+                        <span class="core-text">K</span>
+                    </div>
+                    <!-- Voice Wave Visualizer Bars -->
+                    <div class="voice-wave-bars" id="voice-wave-bars">
+                        <div class="bar"></div>
+                        <div class="bar"></div>
+                        <div class="bar"></div>
+                        <div class="bar"></div>
+                        <div class="bar"></div>
+                        <div class="bar"></div>
+                        <div class="bar"></div>
+                        <div class="bar"></div>
+                        <div class="bar"></div>
+                        <div class="bar"></div>
+                        <div class="bar"></div>
+                        <div class="bar"></div>
+                    </div>
+                </div>
+
+                <div class="interaction-console">
+                    <div class="console-header">
+                        <span class="console-title">// SECURE COMMAND CHANNEL</span>
+                        <div class="hands-free-toggle">
+                            <span class="toggle-label">VOICE CONTROL</span>
+                            <label class="switch">
+                                <input type="checkbox" id="handsfree-switch" checked disabled>
+                                <span class="slider round"></span>
+                            </label>
+                        </div>
+                    </div>
+                    <div class="chat-viewport" id="chat-viewport">
+                        <!-- Messages render here -->
+                        <div class="message system-msg">
+                            <span class="prefix">// SYSTEM:</span> Welcome, sir. Boot diagnostics loaded successfully.
+                        </div>
+                    </div>
+
+                    <div class="input-form">
+                        <button class="voice-btn" id="voice-btn" title="Speak to Krishna">
+                            <svg viewBox="0 0 24 24" width="24" height="24">
+                                <path fill="currentColor" d="M12,2A3,3 0 0,1 15,5V11A3,3 0 0,1 12,14A3,3 0 0,1 9,11V5A3,3 0 0,1 12,2M19,11C19,14.53 16.39,17.44 13,17.93V21H11V17.93C7.61,17.44 5,14.53 5,11H7A5,5 0 0,0 12,16A5,5 0 0,0 17,11H19Z"/>
+                            </svg>
+                        </button>
+                        <input type="text" id="text-input" placeholder="Type a command or say 'Krishna'..." autocomplete="off">
+                        <button class="send-btn" id="send-btn">
+                            <svg viewBox="0 0 24 24" width="20" height="20">
+                                <path fill="currentColor" d="M2,21L23,12L2,3V10L17,12L2,14V21Z"/>
+                            </svg>
+                        </button>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Right Panel: Tasks & Skills -->
+            <section class="card glassmorphic right-panel">
+                <div class="card-header">
+                    <h2>TASK PLANNER & MEMORIES</h2>
+                </div>
+                <div class="card-content panel-split">
+                    <!-- Tasks Segment -->
+                    <div class="segment-block">
+                        <h3>ACTIVE SCHEDULE</h3>
+                        <div class="task-list" id="task-list">
+                            <!-- Tasks loaded from memory service -->
+                            <div class="task-item">
+                                <input type="checkbox" id="task-t1" checked disabled>
+                                <label for="task-t1">Initialize OS Core Agent</label>
+                            </div>
+                            <div class="task-item">
+                                <input type="checkbox" id="task-t2" disabled>
+                                <label for="task-t2">Index documentation for RAG search</label>
+                            </div>
+                            <div class="task-item">
+                                <input type="checkbox" id="task-t3" disabled>
+                                <label for="task-t3">Complete user profile configurations</label>
+                            </div>
+                        </div>
+                        <div class="task-quick-add">
+                            <input type="text" id="new-task-input" placeholder="Quick task...">
+                            <button id="add-task-btn">+</button>
+                        </div>
+                    </div>
+
+                    <!-- Skills & Plugins Segment -->
+                    <div class="segment-block plugins-segment">
+                        <h3>ACTIVE MODULES & SKILLS</h3>
+                        <div class="plugin-grid" id="plugins-container">
+                            <div class="plugin-chip">
+                                <span class="indicator active"></span>
+                                <span class="p-name">Weather Skill</span>
+                            </div>
+                            <div class="plugin-chip">
+                                <span class="indicator active"></span>
+                                <span class="p-name">WhatsApp Automation</span>
+                            </div>
+                            <div class="plugin-chip">
+                                <span class="indicator active"></span>
+                                <span class="p-name">Telegram Bot</span>
+                            </div>
+                            <div class="plugin-chip">
+                                <span class="indicator active"></span>
+                                <span class="p-name">OS Automation</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+        </main>
+
+        <!-- Terminal Output Log Console at bottom -->
+        <footer class="terminal-container glassmorphic">
+            <div class="terminal-header">
+                <span>KRISHNA TERMINAL EVENT FEED</span>
+                <span id="feed-status" class="cyan-glow">ONLINE</span>
+            </div>
+            <div class="terminal-body" id="terminal-body">
+                <p class="log-line text-dim">[2026-06-24T00:33:42] [SYS] EventBus initialization complete. Subscribed to '*'</p>
+                <p class="log-line text-dim">[2026-06-24T00:33:42] [SYS] Loaded 3 plugins: weather_plugin, whatsapp_plugin, telegram_plugin</p>
+                <p class="log-line text-dim">[2026-06-24T00:33:42] [SYS] Core Agent boot successful.</p>
+            </div>
+        </footer>
+    </div>
+
+    <!-- Permission/Confirmation Modal -->
+    <div class="modal-overlay" id="confirmation-modal">
+        <div class="modal-card glassmorphic">
+            <div class="modal-header warning-glow">
+                <h3>SECURE ACTION CONFIRMATION</h3>
+            </div>
+            <div class="modal-body">
+                <p>Sir, Krishna requires authorization to execute the following administrative command:</p>
+                <div class="action-details">
+                    <div><span class="m-label">ACTION:</span> <span id="modal-action-name" class="m-val">shutdown_pc</span></div>
+                    <div><span class="m-label">PERMISSION LEVEL:</span> <span id="modal-permission-level" class="m-val text-red">Critical</span></div>
+                    <div><span class="m-label">PARAMETERS:</span> <pre id="modal-action-params" class="m-val">{"delay_seconds": 10}</pre></div>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button class="modal-btn approve-btn" id="modal-approve">APPROVE DISPATCH</button>
+                <button class="modal-btn deny-btn" id="modal-deny">DENY ACTION</button>
+            </div>
+        </div>
+    </div>
+    <script src="app.js"></script>
+</body>
+</html>
